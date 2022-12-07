@@ -1,0 +1,15 @@
+{
+  "name": "Zulf GraphQL Schema",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "https://close-hare-18.hasura.app/v1/graphql",
+        "headers": {
+          "X-Hasura-Admin-Secret": "U6hdl3bEEKkCwvj0omBwOo1qGTeloYBB8M4epP8TDJxhTSKHl3bnNHGFj3KQbBzZ"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

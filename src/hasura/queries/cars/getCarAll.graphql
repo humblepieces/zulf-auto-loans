@@ -1,0 +1,15 @@
+query GetCars {
+    cars {
+        id
+        country_bought
+        kilometre
+        last_update_by
+        make
+        model
+        name
+        previous_owner
+        vin_number
+        year_registered
+        year
+    }
+}

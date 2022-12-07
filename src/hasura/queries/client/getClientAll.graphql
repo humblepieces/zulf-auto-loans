@@ -1,0 +1,17 @@
+query getClients {
+    clients {
+        id
+        first_name
+        last_name
+        current_living_address
+        date_of_birth
+        fathers_name
+        id_number
+        occupation
+        other_phone_number
+        personal_phone_number
+        salary
+        work_address
+        last_updated_by
+    }
+}

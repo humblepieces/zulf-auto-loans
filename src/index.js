@@ -1,13 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {ChakraProvider} from "@chakra-ui/react";
+import mainTheme from "./theme/main-theme";
+import {Auth0Provider} from "@auth0/auth0-react";
+import history from "./utils/history";
+import {env} from 'process';
 
+
+const onRedirectCallback = (appState) => {
+    history.push(
+        appState && appState.returnTo ? appState.returnTo : window.location.pathname
+    );
+};
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <ChakraProvider theme={mainTheme}>
+          <Auth0Provider
+              domain={process.env.REACT_APP_AUTH0_DOMAIN}
+              clientId={process.env.REACT_APP_AUTH0_CLIENTID}
+              audience={process.env.REACT_APP_AUTH0_AUDIENCE}
+              redirectUri={process.env.REACT_APP_AUTH0_REDIRECTURL}
+              useRefreshTokens={true}
+              cacheLocation="localstorage"
+              onRedirectCallback={onRedirectCallback}
+          >
+          <App />
+          </Auth0Provider>
+      </ChakraProvider>
   </React.StrictMode>
 );
 

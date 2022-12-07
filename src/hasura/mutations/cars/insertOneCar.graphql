@@ -1,0 +1,17 @@
+mutation insertCar($country_bought: String, $year_registered: Int, $year1: Int, $vin_number: String, $previous_owner: String, $name: String, $model: String , $make: String , $last_update_by: String , $kilometre: String ) {
+    insert_cars(objects: {country_bought: $country_bought, kilometre: $kilometre, last_update_by: $last_update_by, make: $make, model: $model, name: $name, previous_owner: $previous_owner, vin_number: $vin_number, year_registered: $year_registered, year: $year1}) {
+        returning {
+            country_bought
+            id
+            kilometre
+            last_update_by
+            make
+            model
+            name
+            previous_owner
+            vin_number
+            year
+            year_registered
+        }
+    }
+}
