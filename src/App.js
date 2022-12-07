@@ -40,6 +40,7 @@ function App() {
       element: <Profile/>
     }
   ]);
+
   const { isAuthenticated, getAccessTokenSilently,isLoading } = useAuth0();
   const [accesstoken,setAccessToken] = useState('');
 
