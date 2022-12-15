@@ -29,6 +29,7 @@ export const ZTable = ({...props}) => {
             }else{
                 return result;
             }
+            console.log(key)
         }, {}));
     }
     const handleFilterChange = (event) => {
@@ -39,9 +40,9 @@ export const ZTable = ({...props}) => {
             [name]: value,
         });
 
+        console.log(name !== 'id' && name !== '__typename')
+
         // // Filter the data based on the filter values
-
-
         if(value === ""){
             setFilteredData(data)
         }else {
@@ -71,6 +72,7 @@ export const ZTable = ({...props}) => {
         }
     },[setFilterValues, setData, data, props.body])
 
+
     return (
         <Card bg='white'>
             <TableContainer overflowY='scroll' overflowX='scroll' scrollBehavior='smooth'>
@@ -80,7 +82,7 @@ export const ZTable = ({...props}) => {
                         <Tr>
                             {(Object.keys(filterValues).length > 0) && (
                                 (Object.entries(data[0]).map(([key, value]) => (
-                                        (key !=='__typename' &&
+                                        ((key !== 'id' && key !== '__typename') &&
                                                 <Th>
                                                     <Text>
                                                         {key}
@@ -109,7 +111,7 @@ export const ZTable = ({...props}) => {
                                         {filteredData.map((bodyContent) => (
                                             <Tr key={bodyContent.id}>
                                                 {Object.entries(bodyContent).map(([key, value]) => (
-                                                    ((key !=='__typename' || key !=='id')  && <Td>{value.toString().trim()}</Td>)
+                                                    ((key !== 'id' && key !== '__typename')  && <Td>{value.toString().trim()}</Td>)
                                                 ))}
                                             </Tr>
                                         ))}
@@ -121,7 +123,7 @@ export const ZTable = ({...props}) => {
                                         {data.map((bodyContent) => (
                                             <Tr key={bodyContent.id}>
                                                 {Object.entries(bodyContent).map(([key, value]) => (
-                                                    ((key !=='__typename' || key !=='id') && <Td>{value.toString().trim()}</Td>)
+                                                    ((key !== 'id' && key !== '__typename') && <Td>{value.toString().trim()}</Td>)
                                                 ))}
                                             </Tr>
                                         ))}
