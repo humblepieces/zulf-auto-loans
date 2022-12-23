@@ -26,7 +26,7 @@ import {useEffect, useState} from "react";
 import {useQuery, gql, useMutation} from "@apollo/client";
 import {ZTable} from "../../shared/components/ZTable";
 import {GET_CLIENTS} from '../../hasura/queries/client/index';
-import {INSERT_CLIENT} from "../../hasura/mutations/client";
+import {DELETE_CLIENT, INSERT_CLIENT, UPDATE_CLIENT} from "../../hasura/mutations/client";
 
 export const Clients = () => {
     const navigate = useNavigate();
@@ -49,6 +49,8 @@ export const Clients = () => {
     const [clients, setClients] = useState([]);
     const {loading, error, data} = useQuery(gql(GET_CLIENTS));
     const [addClient] = useMutation(gql(INSERT_CLIENT));
+    const [updateClient] = useMutation(gql(UPDATE_CLIENT));
+    const [deleteClient] = useMutation(gql(DELETE_CLIENT));
 
 
     const handleChange = (event) => {
@@ -312,7 +314,7 @@ export const Clients = () => {
                             Add Client
                         </Button>
                     </Flex>
-                    <ZTable caption='Client Data' body={clients}  message='No data available'></ZTable>
+                    <ZTable caption='Client Data' body={clients}  message='No data available' updateHandler={updateClient} deleteHandler={deleteClient()}></ZTable>
                 </Flex>
             </Box>
         </Flex>
